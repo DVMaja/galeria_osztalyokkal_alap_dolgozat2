@@ -5,7 +5,18 @@ class Kartya {
         this.#kepem = kepem;
         this.tarolo = szuloelem.children("div:last-child");
         this.tarolo.append(`<img src="${this.#kepem.kep}" alt="">`);
-        this.kepImg = this.tarolo.children("img");
+        this.kepImg = this.tarolo.children("img");             
+
+        this.kepImg.on("click", ()=>{
+           this.esemenyTrigger();
+        });
     }
+
+    esemenyTrigger() {
+        const esemenyem = new CustomEvent("esemenyem", { detail: this});
+        window.dispatchEvent(esemenyem);
+    }
+   
 }
 export default Kartya;
+//ha rákattintunk a képekre akkor írja ki az adataait
